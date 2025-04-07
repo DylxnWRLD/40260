@@ -12,19 +12,19 @@
         becado (si | no) "no">
 ]>
 <alumnos>
-    <alumno id="1" edad="20" becado="si">
+    <alumno id="a1" edad="20" becado="si">
         <nombre>Eren</nombre>
         <nacimiento>30/marzo/835</nacimiento>
         <apellido>Jaeger</apellido>
         <curso>Mates</curso>
     </alumno>
-    <alumno id="20" becado="no">
+    <alumno id="a20" becado="no">
         <nombre>Mikasa</nombre>
         <nacimiento>10/febrero/2005</nacimiento>
         <apellido>Ackerman</apellido>
         <curso>Español</curso>
     </alumno>
-    <alumno id="2" edad="29">
+    <alumno id="a2" edad="29">
         <nombre>Pedro</nombre>
         <nacimiento>02/julio/1995</nacimiento>
         <apellido>Juárez</apellido>

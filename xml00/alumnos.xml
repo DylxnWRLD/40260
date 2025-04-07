@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<alumnos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="alumnos.xsd" >
+    <alumno>
+        <nombre>Eren</nombre>
+        <nacimiento>2002-10-20</nacimiento>
+    </alumno>
+    <alumno>
+        <nombre>Mikasa</nombre>
+        <nacimiento>2002-10-20</nacimiento>
+    </alumno>
+    <alumno>
+        <nombre>Pedro</nombre>
+        <nacimiento>2002-10-20</nacimiento>
+    </alumno>
+</alumnos>
