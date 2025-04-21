@@ -4,42 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pagina 01</title>
 </head>
 
 <body>
 
-</body>
+    <button onclick="loadXMLDoc()">Ejecutar función</button>
+    <table id="demo"></table>
 
-</html>
 
-<button onclick="loadXMLDoc()">Ejecutar función</button>
-<table id="demo"></table>
 
-<script>
-    function loadXMLDoc() {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {
-            const xmlDoc = xhttp.responseXML;
-            const cd = xmlDoc.getElementsByTagName("CD");
-            myFunction(cd);
+    <script>
+        // Función principal usando async/await y fetch
+        const loadXMLDoc = async () => {
+            try {
+                const response = await fetch('cd_catalog.xml');
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "application/xml");
+                const cds = xmlDoc.getElementsByTagName("CD");
+                myFunction(cds);
+            } catch (error) {
+                console.error('Error loading XML:', error);
+            }
+        };
+
+        const myFunction = (cds) => {
+            let table = "<tr><th>Artist</th><th>Title</th></tr>";
+            Array.from(cds).forEach(cd => {
+                const artist = cd.getElementsByTagName("ARTIST")[0]?.textContent || "N/A";
+                const title = cd.getElementsByTagName("TITLE")[0]?.textContent || "N/A";
+                table += `<tr><td>${artist}</td><td>${title}</td></tr>`;
+            });
+            document.getElementById("demo").innerHTML = table;
+        };
+    </script>
+
+
+
+    <!--
+    <script>
+        function loadXMLDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                const xmlDoc = xhttp.responseXML;
+                const cd = xmlDoc.getElementsByTagName("CD");
+                myFunction(cd);
+            }
+            xhttp.open("GET", "cd_catalog.xml", true); // Asegúrate de que el archivo XML esté disponible
+            xhttp.send();
         }
-        xhttp.open("GET", "cd_catalog.xml");
-        xhttp.send();
-    }
 
-    function myFunction(cd) {
-        let table = "<tr><th>Artist</th><th>Title</th></tr>";
-        for (let i = 0; i < cd.length; i++) {
-            table += "<tr><td>" +
-                cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-                "</td><td>" +
-                cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-                "</td></tr>";
+        function myFunction(cd) {
+            let table = "<tr><th>Artist</th><th>Title</th></tr>";
+            for (let i = 0; i < cd.length; i++) {
+                table += "<tr><td>" +
+                    cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+                    "</td><td>" +
+                    cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+                    "</td></tr>";
+            }
+            document.getElementById("demo").innerHTML = table;
         }
-        document.getElementById("demo").innerHTML = table;
-    }
-</script>
+    </script>
+-->
 
 </body>
 
