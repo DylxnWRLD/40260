@@ -39,15 +39,26 @@
         console.log(ejemplo)
 
 
-    
-        function imagen(id){
+
+        function imagen(id) {
             const componente = "<figure>" +
-            '<img src="https://picsum.photos/id/'+id+'/200/200" alt="">' +
-            "<figcaption>John</figcaption>" +
-            "</figure>"  
+                '<img src="https://picsum.photos/id/' + id + '/200/200" alt="">' +
+                "<figcaption>John</figcaption>" +
+                "</figure>"
             return componente
         }
-        ejemplo.innerHTML = "hola" +  imagen(1) + imagen(2)
+
+        const Picture = (id) => {
+            return `
+                <figure> 
+                <img src="https://picsum.photos/id/${id}/200/200" alt="">
+                    <figcaption>John</figcaption> 
+                </figure>
+                `
+        };
+        ejemplo.innerHTML = "hola" + Picture(1)
+
+        // ejemplo.innerHTML = "hola" +  imagen(1) + imagen(2)
 
     </script>
 </body>
